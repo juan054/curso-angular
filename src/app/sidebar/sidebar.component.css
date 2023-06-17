@@ -1,0 +1,6 @@
+h2{
+    /*height: calc(100vh - var(--header-height)-var(--footer-height) );
+    width: var(--sidebar-widht);*/
+    background-color: rgb(255, 145, 0);
+    
+}
