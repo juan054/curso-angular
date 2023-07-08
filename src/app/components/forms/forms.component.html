@@ -1,0 +1,119 @@
+
+<form [formGroup]="usermodel" class="row g-3 needs-validation " novalidate>
+    <div class="col-md-6 ">
+      <label for="validationCustom01" class="form-label">Nombre</label>
+      <input 
+      formControlName="nombre"
+      type="text" 
+      class="form-control border border-dark" 
+      id="validationCustom01" 
+      value="" 
+      required>
+      <div class="valid-feedback">
+        Looks good!
+      </div>
+    </div>
+    <div class="col-md-6">
+      <label for="validationCustom02" class="form-label">Apellido</label>
+      <input 
+      formControlName="apellido"
+      type="text" 
+      class="form-control border border-dark" 
+      id="validationCustom02" 
+      value="" 
+      required>
+      <div class="valid-feedback">
+        Looks good!
+      </div>
+    </div>
+    <div class="col-md-6">
+      <label for="validationCustomUsername" class="form-label">Email</label>
+      <div class="input-group has-validation">
+        <input 
+        formControlName="email"
+        type="text" 
+        class="form-control border border-dark" 
+        id="validationCustomUsername" 
+        aria-describedby="inputGroupPrepend" 
+        required>
+        <div class="invalid-feedback">
+          Please choose a username.
+        </div>
+      </div>
+     
+    </div>
+    <div class="col-md-6">
+        <label for="inputPassword" class="form-label">contraseña</label>
+            <input 
+            formControlName="contraseña"
+            type="password" 
+            class="form-control border border-dark" 
+            id="inputPassword"
+            required>
+            
+        </div>
+    <div class="col-md-6">
+      <label for="validationCustom03" class="form-label">Ciudad</label>
+      <input 
+      formControlName="ciudad"
+      type="text" 
+      class="form-control border border-dark" 
+      id="validationCustom03" 
+      required>
+      <div class="invalid-feedback">
+        Please provide a valid city.
+      </div>
+    </div>
+    
+    <div class="col-md-6">
+      <label for="validationCustom05" class="form-label">Codigo postal</label>
+      <input 
+      formControlName="codigoPostal"
+      type="text" 
+      class="form-control border border-dark" 
+      id="validationCustom05" 
+      required>
+      <div class="invalid-feedback">
+        Please provide a valid zip.
+      </div>
+    </div>
+    <div
+     *ngFor="let direccioncontrol of direccionFormArray.controls"   
+     class="col-md-12">
+        <label for="validationCustom03" class="form-label">direccion</label>
+        <input 
+        formControlName="direccion"
+        type="text" 
+        class="form-control border border-dark" 
+        id="validationCustom03" 
+        required>
+        <div class="invalid-feedback">
+          porfavor ponga una direccion valida
+        </div>
+        
+
+      </div>
+      <div class="col-12">
+        <button (click)="adddireccioncontrol()" class="btn btn-primary border border-dark " type="submit">Agregar direccion</button>
+    </div>
+    <div class="col-12">
+      <div class="form-check">
+        <input class="form-check-input " type="checkbox" value="" id="invalidCheck" required>
+        <label class="form-check-label border border-dark" for="invalidCheck">
+          Acepta terminos y condiciones
+        </label>
+        <div class="invalid-feedback">
+          You must agree before submitting.
+        </div>
+      </div>
+    </div>
+    <div class="col-12">
+      <button class="btn btn-success border border-dark" type="submit">Enviar</button>
+    </div>
+    <hr>
+
+    <div class="col-12">
+        <h5>Resultado formulario</h5>
+        <pre>{{ usermodel.value | json }}</pre>
+    </div>
+  </form>
