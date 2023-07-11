@@ -11,7 +11,7 @@ interface usermodel{
 nombre:FormControl<string | null>,
 apellido:FormControl<string | null>,
 email:FormControl<string | null>,
-contraseña:FormControl<string | null>,
+contrasenia:FormControl<string | null>,
 codigoPostal:FormControl<string | null>,
 ciudad: FormControl<string | null>,
 direccion: FormArray<FormGroup<direccionFormGroup>>,
@@ -30,7 +30,7 @@ export class FormsComponent {
   nombreControl = new FormControl('', [Validators.required]);
   apellidoControl = new FormControl('', [Validators.required]);
   emailControl = new FormControl('', [Validators.required]);
-  contraseñaControl = new FormControl('');
+  contraseniaControl = new FormControl('');
   codigoPostalControl = new FormControl('', [Validators.required]);
   ciudadControl = new FormControl ('', [Validators.required]);
 
@@ -46,7 +46,7 @@ export class FormsComponent {
     nombre: this.nombreControl,
     apellido: this.apellidoControl,
     email: this.emailControl,
-    contraseña: this.contraseñaControl,
+    contrasenia: this.contraseniaControl,
     codigoPostal: this.codigoPostalControl,
     ciudad: this.ciudadControl,
     direccion:this.direccionFormArray
@@ -79,5 +79,11 @@ export class FormsComponent {
 
   }
 */
+}
+
+
+
+eliminarDireccionDelArray(index:number): void{
+  this.direccionFormArray.removeAt(index);
 }
 }

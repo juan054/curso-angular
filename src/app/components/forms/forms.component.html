@@ -6,11 +6,12 @@
       formControlName="nombre"
       type="text" 
       class="form-control border border-dark" 
+      [class.is-invalid]="nombreControl.touched && nombreControl.invalid"
       id="validationCustom01" 
       value="" 
       required>
-      <div class="valid-feedback">
-        Looks good!
+      <div class="invalid-feedback">
+        campo obligatorio
       </div>
     </div>
     <div class="col-md-6">
@@ -19,11 +20,12 @@
       formControlName="apellido"
       type="text" 
       class="form-control border border-dark" 
+      [class.is-invalid]="apellidoControl.touched && apellidoControl.invalid"
       id="validationCustom02" 
       value="" 
       required>
-      <div class="valid-feedback">
-        Looks good!
+      <div class="invalid-feedback">
+        campo obligatorio
       </div>
     </div>
     <div class="col-md-6">
@@ -33,25 +35,32 @@
         formControlName="email"
         type="text" 
         class="form-control border border-dark" 
+        [class.is-invalid]="emailControl.touched && emailControl.invalid"
         id="validationCustomUsername" 
         aria-describedby="inputGroupPrepend" 
         required>
         <div class="invalid-feedback">
-          Please choose a username.
+            Por favor, elija un email.
         </div>
       </div>
      
     </div>
     <div class="col-md-6">
         <label for="inputPassword" class="form-label">contraseña</label>
+        <div class="input-group has-validation">
             <input 
             formControlName="contraseña"
             type="password" 
-            class="form-control border border-dark" 
+            class="form-control border border-dark"
+            [class.is-invalid]="contraseniaControl.touched && contraseniaControl.invalid"
             id="inputPassword"
             required>
-            
+            <div class="invalid-feedback">
+                Por favor, ingrese una contraseña 
+              </div>
+        </div>  
         </div>
+
     <div class="col-md-6">
       <label for="validationCustom03" class="form-label">Ciudad</label>
       <input 
@@ -78,22 +87,23 @@
       </div>
     </div>
     <div
-     *ngFor="let direccioncontrol of direccionFormArray.controls"   
-     class="col-md-12">
+     *ngFor="let direccioncontrol of direccionFormArray.controls;  let i = index "   
+     class="col-md-8 input-group ">
         <label for="validationCustom03" class="form-label">direccion</label>
         <input 
-        formControlName="direccion"
+        [formControl]="direccioncontrol.controls.direccion"
         type="text" 
         class="form-control border border-dark" 
         id="validationCustom03" 
         required>
+        <button *ngIf="i > 0" (click)="eliminarDireccionDelArray(i)" class="btn btn-danger" type="button" id="button-addon2">X</button>
         <div class="invalid-feedback">
           porfavor ponga una direccion valida
         </div>
         
 
       </div>
-      <div class="col-12">
+      <div class="col-8">
         <button (click)="adddireccioncontrol()" class="btn btn-primary border border-dark " type="submit">Agregar direccion</button>
     </div>
     <div class="col-12">
